@@ -1,0 +1,9 @@
+*.png
+__pycache__
+.vscode
+data/citibike
+data/covid19
+data/earthquakes
+data/bold5000
+build
+.DS_Store
