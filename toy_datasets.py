@@ -81,14 +81,14 @@ def generate(mhp, data_fn, ndim, num_classes):
     return seq
 
 
-def pinwheel(num_samples, num_classes):
+def pinwheel(num_samples, num_classes, rng=np.random):
     radial_std = 0.3
     tangential_std = 0.1
     num_per_class = num_samples
     rate = 0.25
     rads = np.linspace(0, 2 * np.pi, num_classes, endpoint=False)
 
-    features = np.random.randn(num_classes * num_per_class, 2) \
+    features = rng.randn(num_classes * num_per_class, 2) \
         * np.array([radial_std, tangential_std])
     features[:, 0] += 1.
     labels = np.repeat(np.arange(num_classes), num_per_class)
