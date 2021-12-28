@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import urllib.request
 import shutil
+import os
 
 
 def download_data(year_start, year_end):
@@ -14,6 +15,7 @@ def download_data(year_start, year_end):
            "&minlongitude=122&minmagnitude=2.5&eventtype=earthquake&orderby=time-asc")
 
     filename = f"earthquakes/{year_start}_{year_end}.csv"
+    os.makedirs("earthquakes", exist_ok=True)
     urllib.request.urlretrieve(url, filename)
     return filename
 
@@ -52,11 +54,10 @@ def preprocess():
 
         t, x = seq[:, 0:1], seq[:, 1:3]
 
-        print(seq_name, seq.shape)
-
         sequences[seq_name] = np.concatenate([t, x], axis=1)
 
     np.savez("earthquakes/earthquakes_jp.npz", **sequences)
+    print("Preprocessing complete.")
 
 
 if __name__ == "__main__":
