@@ -78,7 +78,7 @@ def process(root="", year=2019):
 
             print(np.sum(subsample_idx))
 
-    np.savez("citibike/citibike2.npz", **sequences)
+    np.savez("citibike/citibike.npz", **sequences)
 
 
 def add_spatial_noise(coords, std=[0., 0., 0.]):
